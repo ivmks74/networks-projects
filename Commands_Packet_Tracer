@@ -1,0 +1,316 @@
+COMMANDS USE IN CISCO PACKET TRACER
+
+1.enable {en}
+
+This command elevates the user from User EXEC mode (>) to Privileged EXEC mode (#). Privileged EXEC mode allows access to more commands, including device configuration and diagnostics.netwrix+1
+
+Usage: Used immediately after accessing a router or switch CLI to prepare for system-level operations or entering configuration mode.
+
+Devices: Routers, Switches, and select Multi-layer Switches.
+
+
+2.config terminal {conf t}
+
+This command initiates Global Configuration mode, allowing the modification of running configurations, including interface setup, routing, and security.cisco+1
+
+Usage: Used after enabling Privileged EXEC mode to start system-wide configuration tasks.
+
+Devices: Routers, Switches, some Firewalls.
+
+
+3.interface g0/1 {interface = int }
+
+This command (full form: interface GigabitEthernet0/1) is used to enter configuration mode for a specific network interface on the device, where you can assign IP addresses, enable/disable the port, and change operational parameters.ipcisco+1
+
+Usage: Configure settings for individual interfaces such as IP assignment, description, speed, duplex, and status.
+
+Devices: Routers, Switches (with GigabitEthernet ports).
+
+
+4.int range g0/1, f3/1, f4/1
+
+The command interface range enables configuration of multiple interfaces simultaneously. For example: interface range GigabitEthernet0/1, FastEthernet3/1, FastEthernet4/1.
+
+Usage: Used to apply the same configuration (e.g., access mode, VLAN assignment) to several ports at once, improving efficiency for batch changes.
+
+Devices: Switches (typically Layer 2 or Layer 3 switches with multiple interfaces).
+
+
+
+
+5.switchport mode access
+
+This sets a switch port to operate as an access port, meaning it carries traffic for a single VLAN and does not participate in trunking.
+
+Usage: Used when connecting end devices, such as PCs or printers, to a switch port to ensure only one VLAN is assigned to that port.
+
+Devices: Switches.
+
+
+6.switchport access vlan 10
+
+Assigns the switch port (must be in access mode) to VLAN 10, segmenting it to that VLAN.
+
+Usage: Used for setting up VLAN membership so that grouped devices can communicate or be isolated on a switch.
+
+Devices: Switches.
+
+
+7.show vlan brief (abbreviated here as "show vl br")
+
+This is a common Cisco command used to display a summarized overview of VLANs configured on a switch. It shows VLAN IDs, VLAN names, their status (active or inactive), and which ports belong to each VLAN.cisco+2
+
+When to use: Used in privileged EXEC mode when you want a quick snapshot of all VLAN assignments and VLAN operational status on a switch.
+
+Devices: Primarily used on Cisco switches.
+
+
+8.vlan 10
+
+This command is used in global configuration mode to create VLAN 10 or enter VLAN configuration mode if VLAN 10 already exists on the switch. This allows you to configure properties for VLAN 10, such as naming it or setting other optional parameters.practicalnetworking+1
+
+When to use: Use this command when creating or modifying a VLAN on a switch.
+
+Devices: Switches supporting VLAN configuration.
+
+
+
+
+
+
+
+
+9.name dep A
+
+This sets or changes the name of the VLAN currently being configured to "dep A". It is used inside VLAN configuration mode to provide a meaningful name/label to a VLAN instead of just a number.computernetworkingnotes+1
+
+When to use: Used right after entering VLAN configuration mode to assign or rename a VLAN for better VLAN identification and management.
+
+Devices: Switches.
+
+
+10. switchport mode trunk
+
+Sets the switch port to trunk mode. A trunk port carries traffic for multiple VLANs by tagging frames with VLAN identifiers using 802.1Q encapsulation.
+
+When to use: Used on a switch port that connects to another switch or a device that needs to carry multiple VLANs (e.g., a router or server with VLAN interfaces).
+
+Devices: Cisco switches.
+
+
+11.sw trunk allowed vlan 10,30 (correct full command: switchport trunk allowed vlan 10,30)
+
+Specifies which VLANs are allowed to traverse the trunk link. By default, all VLANs are allowed, but this restricts it to VLANs 10 and 30.
+
+When to use: To limit VLAN traffic on a trunk link for security or bandwidth efficiency.
+
+Devices: Cisco switches.
+
+
+12.sw trunk native vlan 1001s (likely intended: switchport trunk native vlan 1001)
+
+Sets the native VLAN on the trunk port. Untagged traffic on the trunk belongs to the native VLAN (default is VLAN 1).
+
+When to use: Used to change the native VLAN from default VLAN 1, often for security reasons.
+
+Devices: Cisco switches.
+
+
+
+
+
+
+
+13.do sh vl br (do show vlan brief)
+
+Used in configuration mode to run "show vlan brief" command without exiting to privileged EXEC mode. Displays VLANs, their IDs, names, status, and port assignments.
+
+When to use: To verify VLAN configuration while still in config mode.
+
+Devices: Cisco switches.
+
+
+14.do sh int trunk (do show interface trunk)
+
+Same as above, runs "show interface trunk" from config mode to display trunk port details including mode, allowed VLANs, and native VLAN.
+
+When to use: To quickly check trunk status without leaving config mode.
+
+Devices: Cisco switches.
+
+
+15.int g0/0 (interface GigabitEthernet0/0)
+
+Enters the configuration mode for physical interface GigabitEthernet0/0.
+
+When to use: To configure physical interface parameters.
+
+Devices: Routers and Layer 3 switches.
+
+
+16.no sh (no shutdown)
+
+Enables the interface by bringing the interface up if it was administratively down.
+
+When to use: To activate the interface after configuration or to troubleshoot.
+
+Devices: Routers and switches.
+
+
+17.int g0/0.10 (subinterface GigabitEthernet0/0.10)
+
+Enters configuration mode for subinterface 0.10 on GigabitEthernet0/0, used for VLAN tagging on router interfaces.
+
+When to use: Used for inter-VLAN routing or router-on-a-stick configurations.
+
+Devices: Routers.
+
+
+
+
+
+
+
+18.encapsulation dot1q 10
+
+Configures 802.1Q VLAN encapsulation on the subinterface and specifies VLAN 10 for tagging.
+
+When to use: Required for router subinterfaces handling traffic from a specific VLAN.
+
+Devices: Routers.
+
+
+19.ip address 10.0.0.62 255.255.255.192
+
+Assigns an IP address and subnet mask to the interface or subinterface.
+
+When to use: Used to configure Layer 3 interfaces for routing and device communication.
+
+Devices: Routers and Layer 3 switches.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Configuration a Layer 3 switch
+
+To configure a Layer 3 switch for your three VLANs (10, 20, 30) and enable routing between them, follow these steps. Each VLAN will have its own subnet and gateway address on the switch. This setup ensures devices in different VLANs can communicate through the switch’s routing function.
+
+Configuration Steps
+
+1. Enable IP Routing
+In global config mode:
+
+Switch(config)# ip routing
+
+This must be done once to activate Layer 3 routing on the switch.
+
+
+2.Create VLANs
+
+Define your three VLANs:
+
+Switch(config)# vlan 10
+Switch(config)# vlan 20
+Switch(config)# vlan 30
+
+This creates the VLANs in the switch’s database
+
+
+3.Assign Ports to VLANs
+
+For each device connected to the switch, assign its port to the correct VLAN:
+
+Switch(config)# interface FastEthernet 0/1
+Switch(config-if)# switchport access vlan 10
+Switch(config-if)# exit
+
+Switch(config)# interface FastEthernet 0/2
+Switch(config-if)# switchport access vlan 20
+Switch(config-if)# exit
+
+Switch(config)# interface FastEthernet 0/3
+Switch(config-if)# switchport access vlan 30
+Switch(config-if)# exit
+Repeat for each port/device
+
+
+
+
+
+
+
+4.Create SVIs and Assign Gateway IPs
+
+An SVI (Switched Virtual Interface) is configured for each VLAN, taking the gateway IP for the subnet. 
+
+Example addresses:
+
+VLAN 10: Gateway 192.168.0.1
+
+VLAN 20: Gateway 192.168.0.65
+
+VLAN 30: Gateway 192.168.0.129
+
+Commands:
+
+Switch(config)# interface vlan 10
+Switch(config-if)# ip address 192.168.0.1 255.255.255.192
+Switch(config-if)# no shutdown
+Switch(config-if)# exit
+
+Switch(config)# interface vlan 20
+Switch(config-if)# ip address 192.168.0.65 255.255.255.192
+Switch(config-if)# no shutdown
+Switch(config-if)# exit
+
+Switch(config)# interface vlan 30
+Switch(config-if)# ip address 192.168.0.129 255.255.255.192
+Switch(config-if)# no shutdown
+Switch(config-if)# exit
+Each IP here should be set as the default gateway in the corresponding devices.
+
+
+5.Verify Routing
+
+To check your config and show that the routing table is ready:
+
+Switch# do show ip route
+Switch# do show vlan br
+Switch# show interfaces vlan 10
+Switch# show interfaces vlan 20
+Switch# show interfaces vlan 30
+
+You should see the subnets for VLANs 10, 20, 30 marked as ‘Connected’.ciscopress+1
+
+Summary Table
+VLAN	Subnet	Gateway IP	Mask
+10	192.168.0.0/26	192.168.0.1	255.255.255.192
+20	192.168.0.64/26	192.168.0.65	255.255.255.192
+30	192.168.0.128/26	192.168.0.129	255.255.255.192
